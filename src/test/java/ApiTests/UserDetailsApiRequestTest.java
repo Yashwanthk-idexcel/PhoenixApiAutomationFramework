@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.*;
 
 import org.testng.annotations.Test;
 
+import static ApiUtils.ConfigManager.*;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
 import io.restassured.path.json.JsonPath;
@@ -20,7 +21,7 @@ public class UserDetailsApiRequestTest {
 		Header authHeader = new Header("Authorization", accessToken); //header object
 				
 		Response responseBody = given()
-			.baseUri("http://64.227.160.186:9000/v1")
+			.baseUri(getProperty("BASE_URI"))
 			.and()
 			.accept(ContentType.ANY)
 			.and()

@@ -5,6 +5,8 @@ import static org.hamcrest.Matchers.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.*;
 
 import org.testng.annotations.Test;
+
+import static ApiUtils.ConfigManager.*;
 import PojoClasses.UserCredentials;
 import io.restassured.http.ContentType;
 
@@ -16,7 +18,7 @@ public class LoginApiRequestTest {
 	public void loginApiTest() {
 		
 		given()
-			.baseUri("http://64.227.160.186:9000/v1")
+			.baseUri(getProperty("BASE_URI"))
 			.and()
 			.contentType(ContentType.JSON)
 			.and()
