@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import ApiUtils.AuthTokenProvider;
 import ApiUtils.ConfigManager;
+import ApiUtils.SpecUtils;
 import Constants.Role;
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
@@ -16,18 +17,12 @@ public class MasterApiTest {
 	@Test
 	public void verifyMasterApi() {
 		
-		given().baseUri(ConfigManager.getProperty("BASE_URI"))
-		.headers("Authorization", AuthTokenProvider.getToken(Role.FD))
-		.log().uri()
-		.contentType("")
-		.log().method()
-		.log().headers()
+		given()
+		.spec(SpecUtils.requestSpecWithAuth(Role.FD))
 		.when()
 		.post("master") // RA default adds Content Type as "Content-Type=application/x-www-form-urlencoded"
 		.then()
-		.log().all()
-		.statusCode(200)
-		.time(Matchers.lessThan(1000L))
+		.spec(SpecUtils.responseSpec_OK())
 		.body("message", Matchers.equalTo("Success"))
 		.body("data", Matchers.notNullValue())
 		.body("$", Matchers.hasKey("message"))
@@ -44,15 +39,11 @@ public class MasterApiTest {
 	@Test
 	public void invalidTokenForMasterApi() {
 		
-		given().baseUri(ConfigManager.getProperty("BASE_URI"))
-		.log().uri()
-		.contentType("")
-		.log().method()
-		.log().headers()
+		given()
+		.spec(SpecUtils.requestSpec())
 		.when()
 		.post("master") // RA default adds Content Type as "Content-Type=application/x-www-form-urlencoded"
 		.then()
-		.log().all()
-		.statusCode(401);
+		.spec(SpecUtils.responseSpec_TEXT(401));
 	}
 }

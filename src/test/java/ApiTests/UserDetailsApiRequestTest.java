@@ -7,6 +7,8 @@ import static org.hamcrest.Matchers.*;
 import org.testng.annotations.Test;
 
 import ApiUtils.AuthTokenProvider;
+import ApiUtils.SpecUtils;
+
 import static Constants.Role.*;
 
 import static ApiUtils.ConfigManager.*;
@@ -19,29 +21,21 @@ public class UserDetailsApiRequestTest {
 
 	@Test
 	public void userDetailsApiTest() {
-		
-		Header authHeader = new Header("Authorization", AuthTokenProvider.getToken(FD)); //header object
-				
+						
 		Response responseBody = given()
-			.baseUri(getProperty("BASE_URI"))
-			.and()
-			.accept(ContentType.ANY)
-			.and()
-			.header(authHeader)
+			.spec(SpecUtils.requestSpecWithAuth(FD))
 		.when()
 			.get("userdetails")
 		.then()
-			.log().all()
-			.and()
-			.statusCode(200)
+			.spec(SpecUtils.responseSpec_OK())
 			.body("message", equalTo("Success"))
 			.body("data", notNullValue())
 			.body(matchesJsonSchemaInClasspath("response-schema/UserDetailsApiResponseSchema.json"))
 			.extract().response();
-		
+
 		JsonPath jsonBody = responseBody.jsonPath();
 		int iD = jsonBody.getInt("data.id");
 		System.out.println(iD);
-		
+
 	}
 }
