@@ -3,7 +3,7 @@ package ApiUtils;
 import org.hamcrest.Matchers;
 
 import Constants.Role;
-import PojoClasses.UserCredentials;
+import RequestModel.UserCredentials;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
@@ -41,6 +41,17 @@ public class SpecUtils {
 				.setBaseUri(ConfigManager.getProperty("BASE_URI")).setContentType(ContentType.JSON)
 				.addHeader("Authorization", AuthTokenProvider.getToken(role)).setAccept(ContentType.JSON)
 				.log(LogDetail.URI).log(LogDetail.METHOD).log(LogDetail.HEADERS).log(LogDetail.BODY).build();
+
+		return requestSpecification;
+	}
+
+	public static RequestSpecification requestSpecWithAuth(Role role, Object payload) {
+
+		RequestSpecification requestSpecification = new RequestSpecBuilder()
+				.setBaseUri(ConfigManager.getProperty("BASE_URI")).setContentType(ContentType.JSON)
+				.addHeader("Authorization", AuthTokenProvider.getToken(role)).setAccept(ContentType.JSON)
+				.setBody(payload).log(LogDetail.URI).log(LogDetail.METHOD).log(LogDetail.HEADERS).log(LogDetail.BODY)
+				.build();
 
 		return requestSpecification;
 	}

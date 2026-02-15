@@ -6,9 +6,9 @@ import static io.restassured.module.jsv.JsonSchemaValidator.*;
 
 import org.testng.annotations.Test;
 import ApiUtils.SpecUtils;
-import PojoClasses.UserCredentials;
+import RequestModel.UserCredentials;
 
-public class LoginApiRequestTest {
+public class LoginApiTest {
 	
 	UserCredentials userCreds = new UserCredentials("iamfd", "password");
 	

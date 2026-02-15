@@ -17,7 +17,7 @@ import io.restassured.http.Header;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
-public class UserDetailsApiRequestTest {
+public class UserDetailsApiTest {
 
 	@Test
 	public void userDetailsApiTest() {

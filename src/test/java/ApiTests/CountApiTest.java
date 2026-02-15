@@ -4,13 +4,11 @@ import static io.restassured.RestAssured.*;
 
 import static org.hamcrest.Matchers.*;
 
-import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
 import io.restassured.module.jsv.JsonSchemaValidator;
 
-import static ApiUtils.AuthTokenProvider.*;
 import static Constants.Role.*;
 
 import static ApiUtils.ConfigManager.*;

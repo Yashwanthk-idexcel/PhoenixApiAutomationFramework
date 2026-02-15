@@ -5,8 +5,10 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 import Constants.Role;
+import RequestModel.UserCredentials;
+
 import static Constants.Role.*;
-import PojoClasses.UserCredentials;
+
 import io.restassured.http.ContentType;
 
 public class AuthTokenProvider {
