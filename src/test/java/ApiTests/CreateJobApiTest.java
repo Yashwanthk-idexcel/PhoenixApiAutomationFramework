@@ -1,6 +1,7 @@
 package ApiTests;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
+import static ApiUtils.DateTimeUtil.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,14 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
+import Constants.Model;
+import Constants.OEM;
+import Constants.Platform;
+import Constants.Problem;
+import Constants.Product;
 import Constants.Role;
+import Constants.ServiceLocation;
+import Constants.WarrantyStatus;
 import RequestModel.CreateJobPayload;
 import RequestModel.Customer;
 import RequestModel.CustomerAddress;
@@ -23,17 +31,23 @@ public class CreateJobApiTest {
 	public void createJobApiTest() {
 
 		Customer customer = new Customer("Yashwanth", "K", "9786754626", "", "yashwanthk@gmail.com", "");
+
 		CustomerAddress customerAddress = new CustomerAddress("#99", "Shivakrupa", "Abhayappa Layout",
 				"Balaji Gents PG", "BTM 2nd Stage", "560076", "India", "Karnataka");
-		CustomerProduct customerPorduct = new CustomerProduct("2025-10-14T18:30:00.000Z", "77311111374519",
-				"77311111374519", "77311111374519", "2025-10-14T18:30:00.000Z", 1, 1);
-		Problems problem = new Problems(7, "Solution");
+
+		CustomerProduct customerPorduct = new CustomerProduct(getPreviousDateByDays(10), "81119011374519",
+				"81119011374519", "81119011374519", getPreviousDateByDays(10), Product.NEXUS_2.getCode(),
+				Model.NEXUS_2_BLUE.getCode());
+
+		Problems problem = new Problems(Problem.OVERHEATING.getCode(), "Solution");
 		List<Problems> problemsList = new ArrayList<Problems>();
 		problemsList.add(problem);
 
-		CreateJobPayload payload = new CreateJobPayload(0, 2, 1, 1, customer, customerAddress, customerPorduct,
-				problemsList);
+		CreateJobPayload payload = new CreateJobPayload(ServiceLocation.SERVICE_LOCATION_A.getCode(),
+				Platform.FRONT_DESK.getCode(), WarrantyStatus.IN_WARRANTY.getCode(), OEM.GOOGLE.getCode(), customer,
+				customerAddress, customerPorduct, problemsList);
 
+		
 		given().spec(SpecUtils.requestSpecWithAuth(Role.FD, payload)).when().post("/job/create").then()
 				.spec(SpecUtils.responseSpec_OK())
 				.body(JsonSchemaValidator
