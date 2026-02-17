@@ -1,19 +1,13 @@
 package datadriventesting;
 
-public class UserPojo {
+public class UserBean {
 
 	private String username;
 	private String password;
 
 	
-	public UserPojo() {
+	public UserBean() {
 		
-	}
-	
-	public UserPojo(String username, String password) {
-		super();
-		this.username = username;
-		this.password = password;
 	}
 
 	public String getUsername() {
@@ -34,7 +28,7 @@ public class UserPojo {
 
 	@Override
 	public String toString() {
-		return "UserPojo [username=" + username + ", password=" + password + "]";
+		return "UserBean [username=" + username + ", password=" + password + "]";
 	}
 
 }
