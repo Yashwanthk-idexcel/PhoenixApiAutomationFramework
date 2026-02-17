@@ -1,4 +1,4 @@
-package datadriventesting;
+package DataProvidersApiBeans;
 
 public class UserBean {
 
