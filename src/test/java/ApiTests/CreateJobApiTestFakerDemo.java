@@ -6,7 +6,6 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import ApiUtils.DemoFaker2;
 import ApiUtils.FakerDataGenerator;
 import ApiUtils.SpecUtils;
 import Constants.Role;

@@ -26,6 +26,8 @@ public class FakerDataGenerator {
 	private static final int MST_OEM_ID = 1;
 	private static final int PRODUCT_ID = 1;
 	private static final int MST_MODEL_ID = 1;
+	private static final int[] VALIDPROBLEMSIDS = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, 19, 20, 22, 24,
+			26, 27, 28, 29 };
 
 	private FakerDataGenerator() {
 
@@ -56,13 +58,13 @@ public class FakerDataGenerator {
 			CustomerAddress customerAddress = generateFakeCustomerAddressData();
 			CustomerProduct customerProduct = generateFakeCustomerProductData();
 			List<Problems> problemList = generateFakeProblemsListData();
-			
+
 			CreateJobPayload payload = new CreateJobPayload(MST_SERVICE_LOCATION_ID, MST_PLATFORM_ID,
 					MST_WARRENTY_STATUS_ID, MST_OEM_ID, customer, customerAddress, customerProduct, problemList);
 
 			payloadList.add(payload);
 		}
-		
+
 		return payloadList.iterator(); // Since DataProvider loves to have Iterator
 	}
 
@@ -114,13 +116,25 @@ public class FakerDataGenerator {
 	// Creating Problems Faker Object
 	private static List<Problems> generateFakeProblemsListData() {
 
-		// Generate Random number between 1 - 27
-		int problemId = RANDOM.nextInt(1, 28); // 28 is exlusive
-		String remark = faker.lorem().sentence(3);
+		// Generate Random number between 1 - 27 [14,13,18... - Ids are not present ->
+		// Inconsistency in ProblemIDs]
 
+		int problemsCount = (RANDOM.nextInt(3) + 1); // 1 - 3 are valid number
+
+		int randomIndex;
+		String remark;
 		List<Problems> problemsList = new ArrayList<Problems>();
-		Problems problem = new Problems(problemId, remark);
-		problemsList.add(problem);
+		Problems problem;
+
+		for (int i = 1; i < problemsCount; i++) {
+
+			randomIndex = RANDOM.nextInt(VALIDPROBLEMSIDS.length);
+			remark = faker.lorem().sentence(3);
+
+			problem = new Problems(VALIDPROBLEMSIDS[randomIndex], remark);
+
+			problemsList.add(problem);
+		}
 
 		return problemsList;
 	}
