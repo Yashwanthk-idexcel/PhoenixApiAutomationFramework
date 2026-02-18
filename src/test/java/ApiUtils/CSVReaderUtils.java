@@ -21,20 +21,20 @@ public class CSVReaderUtils {
 
 	}
 
-	public static Iterator<UserBean> loadCSV(String pathOfCsvFile) {
+	public static <T> Iterator<T> loadCSV(String pathOfCsvFile, Class<T> bean) {
 
 		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(pathOfCsvFile);
 		InputStreamReader reader = new InputStreamReader(is);
 		CSVReader csvRead = new CSVReader(reader);
 
 		// Code to map the csv to pojo
-		CsvToBean<UserBean> csvToBean = new CsvToBeanBuilder(csvRead)
-				.withType(UserBean.class)
+		CsvToBean<T> csvToBean = new CsvToBeanBuilder(csvRead)
+				.withType(bean)
 				.withIgnoreEmptyLine(true)
 				.build();
 
-		List<UserBean> userList = csvToBean.parse();
-		return userList.iterator();
+		List<T> list = csvToBean.parse();
+		return list.iterator();
 	}
 
 }
