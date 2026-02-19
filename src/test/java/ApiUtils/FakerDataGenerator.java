@@ -126,7 +126,7 @@ public class FakerDataGenerator {
 		List<Problems> problemsList = new ArrayList<Problems>();
 		Problems problem;
 
-		for (int i = 1; i < problemsCount; i++) {
+		for (int i = 1; i <= problemsCount; i++) {
 
 			randomIndex = RANDOM.nextInt(VALIDPROBLEMSIDS.length);
 			remark = faker.lorem().sentence(3);
