@@ -1,34 +1,18 @@
 package ApiTests.datadriven;
 
-import static io.restassured.RestAssured.*;
-import static ApiUtils.DateTimeUtil.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import static io.restassured.RestAssured.given;
 
 import org.hamcrest.Matchers;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
-import Constants.Model;
-import Constants.OEM;
-import Constants.Platform;
-import Constants.Problem;
-import Constants.Product;
 import Constants.Role;
-import Constants.ServiceLocation;
-import Constants.WarrantyStatus;
 import RequestModel.CreateJobPayload;
-import RequestModel.Customer;
-import RequestModel.CustomerAddress;
-import RequestModel.CustomerProduct;
-import RequestModel.Problems;
 import io.restassured.module.jsv.JsonSchemaValidator;
 
 public class CreateJobApiDataDrivenTest {
 	
-	@Test(description = "Verify if the CreateJob Api is working for iamfd", groups = { "smoke", "api", "regression" }
+	@Test(description = "Verify if the CreateJob Api is working for iamfd", groups = { "datadriven", "api", "regression", "csv" }
 	, dataProviderClass = dataproviders.DataProviderUtils.class
 	, dataProvider = "CreateJobApiDataProvider")
 	public void createJobApiTest(CreateJobPayload createJobPayload) {
