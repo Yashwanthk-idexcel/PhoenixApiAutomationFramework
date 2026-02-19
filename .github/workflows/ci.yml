@@ -17,9 +17,15 @@ on:
       suiteXMLFile: 
         description: "TestNG XML File Name"
         type: choice
-        options: [testng.xml, regression.xml, sanity.xml]
+        options: [testng.xml, regression.xml, sanity.xml, testng-datadriven.xml]
         default: testng.xml
         required: true
+      groups:
+        description: "TestNG Groups Attribute Value"
+        type: choice
+        options: [csv, faker]
+        default: faker
+        required: false
 jobs:
   test:
     runs-on: ubuntu-latest
