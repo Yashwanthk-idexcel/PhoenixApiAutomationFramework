@@ -1,0 +1,85 @@
+[
+	{
+	    "mst_service_location_id": 0,
+	    "mst_platform_id": 2,
+	    "mst_warrenty_status_id": 1,
+	    "mst_oem_id": 2,
+	    "customer": {
+	        "first_name": "Yashwanth",
+	        "last_name": "K",
+	        "mobile_number": "8494995358",
+	        "mobile_number_alt": "1234567125",
+	        "email_id": "google1@gmail.com",
+	        "email_id_alt": "google1@gmail.com"
+	    },
+	    "customer_address": {
+	        "flat_number": "98",
+	        "apartment_name": "Kailasa",
+	        "street_name": "devendra raste",
+	        "landmark": "Swarga",
+	        "area": "Antaapura",
+	        "pincode": "5777777",
+	        "country": "India",
+	        "state": "Assam"
+	    },
+	    "customer_product": {
+	        "dop": "2025-10-14T18:30:00.000Z",
+	        "serial_number": "14942609785111",
+	        "imei1": "14942609785111",
+	        "imei2": "14942609785111",
+	        "popurl": "2025-10-14T18:30:00.000Z",
+	        "product_id": 3,
+	        "mst_model_id": 3
+	    },
+	    "problems": [
+	        {
+	            "id": 2,
+	            "remark": "Battery Issue"
+	        },
+			{
+				"id": 4,
+				"remark": "Serious Issue"
+				
+			}
+	    ]
+	},
+	{
+	    "mst_service_location_id": 0,
+	    "mst_platform_id": 2,
+	    "mst_warrenty_status_id": 1,
+	    "mst_oem_id": 2,
+	    "customer": {
+	        "first_name": "Yashwanth",
+	        "last_name": "K",
+	        "mobile_number": "8494995358",
+	        "mobile_number_alt": "1234567125",
+	        "email_id": "google1@gmail.com",
+	        "email_id_alt": "google1@gmail.com"
+	    },
+	    "customer_address": {
+	        "flat_number": "98",
+	        "apartment_name": "Kailasa",
+	        "street_name": "devendra raste",
+	        "landmark": "Swarga",
+	        "area": "Antaapura",
+	        "pincode": "5777777",
+	        "country": "India",
+	        "state": "Assam"
+	    },
+	    "customer_product": {
+	        "dop": "2025-10-14T18:30:00.000Z",
+	        "serial_number": "19341032514777",
+	        "imei1": "19341032514777",
+	        "imei2": "19341032514777",
+	        "popurl": "2025-10-14T18:30:00.000Z",
+	        "product_id": 3,
+	        "mst_model_id": 3
+	    },
+	    "problems": [
+	        {
+	            "id": 2,
+	            "remark": "Battery Issue"
+	        }
+	    ]
+	}
+]

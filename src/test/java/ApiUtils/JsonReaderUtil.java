@@ -14,7 +14,7 @@ public class JsonReaderUtil {
 
 	public static <T> Iterator<T> loadJSON(String filePath, Class<T[]> clazz) {
 
-		// Demo.json file needs to be read -> test-data\\Demo.json
+		// Demo.json file needs to be read -> test-data\\LoginApiTestData.json
 		InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath);
 
 		// Convert Json object into the Java Object - Deserialization => Help of Jackson
