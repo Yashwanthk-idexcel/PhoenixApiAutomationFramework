@@ -5,6 +5,7 @@
 			<class name="ApiTests.datadriven.CreateJobApiDataDrivenTest" />
 			<class name="ApiTests.datadriven.CreateJobApiFakerDataDrivenTest" />
 			<class name="ApiTests.datadriven.LoginApiJsonDataDrivenTest" />
+			<class name="ApiTests.datadriven.CreateJobApiJsonDataDrivenTest" />
 		</classes>
 	</test>
 </suite>
