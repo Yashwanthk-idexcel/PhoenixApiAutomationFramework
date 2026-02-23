@@ -16,9 +16,14 @@ public class LoginApiJsonDataDrivenTest {
 			"csv" }, dataProviderClass = dataproviders.DataProviderUtils.class, dataProvider = "LoginApiJsonDataProvider")
 	public void loginApiTest(UserCredentials userCreds) {
 
-		given().spec(SpecUtils.requestSpec(userCreds)).when().post("login").then().spec(SpecUtils.responseSpec_OK())
-				.and().body("message", equalTo("Success")).and()
+		given().spec(SpecUtils.requestSpec(userCreds))
+				.when()
+				.post("login")
+				.then()
+				.spec(SpecUtils.responseSpec_OK())
+				.and()
+				.body("message", equalTo("Success"))
+				.and()
 				.body(matchesJsonSchemaInClasspath("response-schema/LoginApiResponseSchema.json"));
 	}
-
 }

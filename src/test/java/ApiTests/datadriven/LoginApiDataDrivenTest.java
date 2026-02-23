@@ -15,9 +15,14 @@ public class LoginApiDataDrivenTest {
 			,dataProvider = "LoginApiDataProvider")
 	public void loginApiTest(UserBean userbean) {
 		
-		given().spec(SpecUtils.requestSpec(userbean)).when().post("login").then().spec(SpecUtils.responseSpec_OK())
-				.and().body("message", equalTo("Success")).and()
+		given().spec(SpecUtils.requestSpec(userbean))
+				.when()
+				.post("login")
+				.then()
+				.spec(SpecUtils.responseSpec_OK())
+				.and()
+				.body("message", equalTo("Success"))
+				.and()
 				.body(matchesJsonSchemaInClasspath("response-schema/LoginApiResponseSchema.json"));
 	}
-
 }

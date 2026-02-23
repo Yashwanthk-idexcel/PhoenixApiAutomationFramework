@@ -30,7 +30,7 @@ public class FakerDataGenerator {
 			26, 27, 28, 29 };
 
 	private FakerDataGenerator() {
-
+		// Because of utility class
 	}
 
 	// Create Faker Payload for the CreateJobApi
@@ -132,7 +132,6 @@ public class FakerDataGenerator {
 			remark = faker.lorem().sentence(3);
 
 			problem = new Problems(VALIDPROBLEMSIDS[randomIndex], remark);
-
 			problemsList.add(problem);
 		}
 

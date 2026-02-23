@@ -8,15 +8,10 @@ public class ConfigManager {
 // Program to read the Properties file from src/test/resources/config/config.properties
 
 	private static Properties prop = new Properties();
-	private static String path = "config/config.properties";
+	private static String path = "config/config.qa.properties";
 	private static String env;
 
 	private ConfigManager() {
-		// The constructor ConfigManager() is not visible - Error will display, if
-		// anyone tries to create an object
-		// Implementing this to restrict creation of Object of ConfirManager to anywhere
-		// outisde this class.
-		// This enables user to not create the object of the ConfigManager
 	}
 
 	// Operation of loading the property file in memory

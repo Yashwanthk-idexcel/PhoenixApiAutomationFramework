@@ -20,8 +20,14 @@ public class LoginApiTest {
 	@Test(description = "Verify if the Login Api is working for iamfd", groups = { "smoke", "api", "regression" })
 	public void loginApiTest() {
 
-		given().spec(SpecUtils.requestSpec(userCreds)).when().post("login").then().spec(SpecUtils.responseSpec_OK())
-				.and().body("message", equalTo("Success")).and()
+		given().spec(SpecUtils.requestSpec(userCreds))
+				.when()
+				.post("login")
+				.then()
+				.spec(SpecUtils.responseSpec_OK())
+				.and()
+				.body("message", equalTo("Success"))
+				.and()
 				.body(matchesJsonSchemaInClasspath("response-schema/LoginApiResponseSchema.json"));
 	}
 

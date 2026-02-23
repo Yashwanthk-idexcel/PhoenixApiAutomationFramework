@@ -21,8 +21,8 @@ public class DataProviderUtils {
 		return CSVReaderUtils.loadCSV("test-data\\LoginCreds.csv", UserBean.class);
 	}
 
-	@DataProvider(name = "CreateJobApiDataProvider", parallel = true)
-	public static Iterator<CreateJobPayload> createJobApiDataProvider() {
+	@DataProvider(name = "CreateJobApiCsvDataProvider", parallel = true)
+	public static Iterator<CreateJobPayload> createJobApiCsvDataProvider() {
 		CreateJobBean tempBean;
 		CreateJobPayload tempPayload;
 
@@ -43,9 +43,8 @@ public class DataProviderUtils {
 
 	@DataProvider(name = "CreateJobApiFakerDataProvider", parallel = true)
 	public static Iterator<CreateJobPayload> createJobApiFakerDataProvider() {
-		String fakerCount = System.getProperty("fakerCount", "5");
-		int fakerCountInt = Integer.parseInt(fakerCount);
-		Iterator<CreateJobPayload> payloadIterator = FakerDataGenerator.generateFakeCreateJobData(fakerCountInt);
+		int fakerCount = Integer.parseInt(System.getProperty("fakerCount", "5"));
+		Iterator<CreateJobPayload> payloadIterator = FakerDataGenerator.generateFakeCreateJobData(fakerCount);
 		return payloadIterator;
 	}
 
@@ -54,11 +53,11 @@ public class DataProviderUtils {
 		return JsonReaderUtil.loadJSON("test-data\\LoginApiTestData.json", UserCredentials[].class);
 	}
 	
+	
 	@DataProvider(name = "CreateJobApiJsonDataProvider", parallel = true)
 	public static Iterator<CreateJobPayload> createJobApiJsonDataProvider() {
 		return JsonReaderUtil.loadJSON("test-data\\CreateJobApiData.json", CreateJobPayload[].class);
 	}
-	
 	
 
 }

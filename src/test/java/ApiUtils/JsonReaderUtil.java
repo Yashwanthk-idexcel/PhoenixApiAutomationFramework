@@ -25,6 +25,7 @@ public class JsonReaderUtil {
 		// created to map username and password from Json File
 		T[] obj = null;
 		List<T> objList = null;
+		
 		try {
 			obj = objMap.readValue(inputStream, clazz);
 

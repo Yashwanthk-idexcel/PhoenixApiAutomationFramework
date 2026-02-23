@@ -85,6 +85,8 @@ public class CreateJobBean {
 	@CsvBindByName(column = "problems__remark")
 	private String problems__remark;
 	
+	
+	// Non-argument Constructor
 	public CreateJobBean() {
 		
 	}

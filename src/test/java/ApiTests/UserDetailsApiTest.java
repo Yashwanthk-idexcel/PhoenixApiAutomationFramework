@@ -23,10 +23,14 @@ public class UserDetailsApiTest {
 			"regression" })
 	public void userDetailsApiTest() {
 
-		Response responseBody = given().spec(SpecUtils.requestSpecWithAuth(FD)).when().get("userdetails").then()
-				.spec(SpecUtils.responseSpec_OK()).body("message", equalTo("Success")).body("data", notNullValue())
-				.body(matchesJsonSchemaInClasspath("response-schema/UserDetailsApiResponseSchema.json")).extract()
-				.response();
+		Response responseBody = given().spec(SpecUtils.requestSpecWithAuth(FD))
+									.when().get("userdetails")
+									.then()
+									.spec(SpecUtils.responseSpec_OK())
+									.body("message", equalTo("Success"))
+									.body("data", notNullValue())
+									.body(matchesJsonSchemaInClasspath("response-schema/UserDetailsApiResponseSchema.json"))
+									.extract().response();
 
 		JsonPath jsonBody = responseBody.jsonPath();
 		int iD = jsonBody.getInt("data.id");

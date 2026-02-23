@@ -27,7 +27,7 @@ public class CSVReaderUtils {
 		InputStreamReader reader = new InputStreamReader(is);
 		CSVReader csvRead = new CSVReader(reader);
 
-		// Code to map the csv to pojo
+		// Code to map the csv to bean
 		CsvToBean<T> csvToBean = new CsvToBeanBuilder(csvRead)
 				.withType(bean)
 				.withIgnoreEmptyLine(true)

@@ -26,12 +26,18 @@ public class AuthTokenProvider {
 		else if (role == QC)
 			userCredential = new UserCredentials("iamqc", "password");
 
-		String token = given().baseUri(ConfigManager.getProperty("BASE_URI")).contentType(ContentType.JSON)
-				.body(userCredential).when().post("login").then().log().ifValidationFails().statusCode(200)
-				.body("message", equalTo("Success")).extract().body().jsonPath().getString("data.token");
+		String token = given().baseUri(ConfigManager.getProperty("BASE_URI"))
+				.contentType(ContentType.JSON)
+				.body(userCredential)
+				.when().post("login")
+				.then()
+				.log().ifValidationFails()
+				.statusCode(200)
+				.body("message", equalTo("Success"))
+				.extract().body().jsonPath().getString("data.token");
 
 		return token;
-
+		
 	}
 
 }

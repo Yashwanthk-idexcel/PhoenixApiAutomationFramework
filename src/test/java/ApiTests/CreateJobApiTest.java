@@ -2,6 +2,8 @@ package ApiTests;
 
 import static io.restassured.RestAssured.*;
 import static ApiUtils.DateTimeUtil.*;
+import static io.restassured.module.jsv.JsonSchemaValidator.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,6 @@ import RequestModel.Customer;
 import RequestModel.CustomerAddress;
 import RequestModel.CustomerProduct;
 import RequestModel.Problems;
-import io.restassured.module.jsv.JsonSchemaValidator;
 
 public class CreateJobApiTest {
 	private CreateJobPayload payload;
@@ -52,10 +53,11 @@ public class CreateJobApiTest {
 	@Test(description = "Verify if the CreateJob Api is working for iamfd", groups = { "smoke", "api", "regression" })
 	public void createJobApiTest() {
 
-		given().spec(SpecUtils.requestSpecWithAuth(Role.FD, payload)).when().post("/job/create").then()
+		given().spec(SpecUtils.requestSpecWithAuth(Role.FD, payload))
+				.when().post("/job/create")
+				.then()
 				.spec(SpecUtils.responseSpec_OK())
-				.body(JsonSchemaValidator
-						.matchesJsonSchemaInClasspath("response-schema/CreateJobApiResponseSchema.json"))
+				.body(matchesJsonSchemaInClasspath("response-schema/CreateJobApiResponseSchema.json"))
 				.body("message", Matchers.equalTo("Job created successfully. "))
 				.body("data.mst_service_location_id", Matchers.equalTo(1))
 				.body("data.job_number", Matchers.startsWith("JOB_"));
