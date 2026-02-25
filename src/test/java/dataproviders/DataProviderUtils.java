@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 
 import ApiUtils.CSVReaderUtils;
 import ApiUtils.CreateJobBeanMapper;
+import ApiUtils.ExcelReaderUtil;
 import ApiUtils.FakerDataGenerator;
 import ApiUtils.JsonReaderUtil;
 import DataProvidersApiBeans.CreateJobBean;
@@ -19,6 +20,11 @@ public class DataProviderUtils {
 	@DataProvider(name = "LoginApiDataProvider", parallel = true)
 	public static Iterator<UserBean> loginApiDataProvider() {
 		return CSVReaderUtils.loadCSV("test-data\\LoginCreds.csv", UserBean.class);
+	}
+	
+	@DataProvider(name = "LoginApiExcelDataProvider", parallel = true)
+	public static Iterator<UserCredentials> loginApiExcelDataProvider() {
+		return ExcelReaderUtil.loadExcelData("test-data\\PhoenixTestData.xlsx");
 	}
 
 	@DataProvider(name = "CreateJobApiCsvDataProvider", parallel = true)
