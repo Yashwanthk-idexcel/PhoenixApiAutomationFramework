@@ -10,7 +10,7 @@ import ApiUtils.SpecUtils;
 import Constants.Role;
 import RequestModel.CreateJobPayload;
 
-public class CreateJobApiDataDrivenTest {
+public class CreateJobApiCsvDataDrivenTest {
 	
 	@Test(description = "Verify if the CreateJob Api is working for iamfd", groups = { "datadriven", "api", "regression", "csv" }
 	, dataProviderClass = dataproviders.DataProviderUtils.class

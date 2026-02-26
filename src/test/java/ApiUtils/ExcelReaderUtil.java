@@ -1,0 +1,38 @@
+package ApiUtils;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.poiji.bind.Poiji;
+
+public class ExcelReaderUtil {
+
+	private ExcelReaderUtil() {
+
+	}
+
+	public static <T> Iterator<T> loadExcelData(String SheetName, Class<T> clazz) {
+		// Apache poi ooxml Library
+		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("test-data\\PhoenixTestData.xlsx");
+
+		XSSFWorkbook myWorkBook = null;
+
+		try {
+			myWorkBook = new XSSFWorkbook(is);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		XSSFSheet mySheet = myWorkBook.getSheet(SheetName);
+
+		
+		List<T> details = Poiji.fromExcel(mySheet, clazz);
+		return details.iterator();
+	}
+
+}
