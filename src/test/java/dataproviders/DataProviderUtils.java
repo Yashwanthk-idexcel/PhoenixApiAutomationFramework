@@ -3,10 +3,12 @@ package dataproviders;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.testng.annotations.DataProvider;
 
 import ApiUtils.CSVReaderUtils;
 import ApiUtils.CreateJobBeanMapper;
+import ApiUtils.ExcelReaderUtil;
 import ApiUtils.FakerDataGenerator;
 import ApiUtils.JsonReaderUtil;
 import DataProvidersApiBeans.CreateJobBean;
@@ -57,6 +59,11 @@ public class DataProviderUtils {
 	@DataProvider(name = "CreateJobApiJsonDataProvider", parallel = true)
 	public static Iterator<CreateJobPayload> createJobApiJsonDataProvider() {
 		return JsonReaderUtil.loadJSON("test-data\\CreateJobApiData.json", CreateJobPayload[].class);
+	}
+	
+	@DataProvider(name = "LoginApiExcelDataProvider", parallel = true)
+	public static Iterator<UserBean> loginApiExcelDataProvider() {
+		return ExcelReaderUtil.loadExcelData("LoginTestData", UserBean.class);
 	}
 	
 

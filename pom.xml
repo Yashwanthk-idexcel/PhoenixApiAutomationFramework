@@ -8,8 +8,8 @@
 	<name>PhoenixApiAutomationFramework</name>
 	<description>PhoenixApiAutomationFramework</description>
 	<properties>
-		<maven.compiler.source> 16 </maven.compiler.source>
-		<maven.compiler.target> 16 </maven.compiler.target>
+		<maven.compiler.source>16</maven.compiler.source>
+		<maven.compiler.target>16</maven.compiler.target>
 	</properties>
 	<build>
 		<plugins>
@@ -60,6 +60,16 @@
 			<groupId>com.github.javafaker</groupId>
 			<artifactId>javafaker</artifactId>
 			<version>1.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ozlerhakan</groupId>
+			<artifactId>poiji</artifactId>
+			<version>5.2.0</version>
 		</dependency>
 	</dependencies>
 </project>
