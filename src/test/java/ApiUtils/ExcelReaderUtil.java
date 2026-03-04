@@ -16,9 +16,9 @@ public class ExcelReaderUtil {
 
 	}
 
-	public static <T> Iterator<T> loadExcelData(String SheetName, Class<T> clazz) {
+	public static <T> Iterator<T> loadExcelData(String filePath, String SheetName, Class<T> clazz) {
 		// Apache poi ooxml Library
-		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("test-data\\PhoenixTestData.xlsx");
+		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath);
 
 		XSSFWorkbook myWorkBook = null;
 

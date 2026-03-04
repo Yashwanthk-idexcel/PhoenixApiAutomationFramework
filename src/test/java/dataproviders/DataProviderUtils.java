@@ -54,25 +54,24 @@ public class DataProviderUtils {
 	public static Iterator<UserCredentials> loginApiJsonDataProvider() {
 		return JsonReaderUtil.loadJSON("test-data\\LoginApiTestData.json", UserCredentials[].class);
 	}
-	
-	
+
 	@DataProvider(name = "CreateJobApiJsonDataProvider", parallel = true)
 	public static Iterator<CreateJobPayload> createJobApiJsonDataProvider() {
 		return JsonReaderUtil.loadJSON("test-data\\CreateJobApiData.json", CreateJobPayload[].class);
 	}
-	
+
 	@DataProvider(name = "LoginApiExcelDataProvider", parallel = true)
 	public static Iterator<UserBean> loginApiExcelDataProvider() {
-		return ExcelReaderUtil.loadExcelData("LoginTestData", UserBean.class);
+		return ExcelReaderUtil.loadExcelData("test-data\\PhoenixTestData.xlsx", "LoginTestData", UserBean.class);
 	}
-	
+
 	@DataProvider(name = "CreateJobApiExcelDataProvider", parallel = true)
 	public static Iterator<CreateJobPayload> createJobApiExcelDataProvider() {
 		CreateJobBean tempBean;
 		CreateJobPayload tempPayload;
 
-		Iterator<CreateJobBean> createJobBeanIterator = ExcelReaderUtil.loadExcelData("CreateJobTestData",
-				CreateJobBean.class);
+		Iterator<CreateJobBean> createJobBeanIterator = ExcelReaderUtil.loadExcelData("test-data\\PhoenixTestData.xlsx",
+				"CreateJobTestData", CreateJobBean.class);
 
 		ArrayList<CreateJobPayload> payloadList = new ArrayList<CreateJobPayload>();
 
@@ -85,5 +84,5 @@ public class DataProviderUtils {
 
 		return payloadList.iterator();
 	}
-	
+
 }
