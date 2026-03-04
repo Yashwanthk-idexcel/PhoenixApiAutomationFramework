@@ -23,6 +23,7 @@ public class HikariCPDemo {
 		hikariConfig.setConnectionTimeout(10000);
 		hikariConfig.setIdleTimeout(1000);
 		hikariConfig.setMaxLifetime(1800000); // 30min
+		hikariConfig.setPoolName("Phoenix Test Automation Framework Pool");
 
 		HikariDataSource hikari = new HikariDataSource(hikariConfig);
 		Connection conn = hikari.getConnection();
