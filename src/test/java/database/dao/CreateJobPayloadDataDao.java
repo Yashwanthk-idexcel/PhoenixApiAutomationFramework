@@ -7,10 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.poi.openxml4j.util.ZipFileZipEntrySource;
-
 import DataProvidersApiBeans.CreateJobBean;
-import database.DatabaseManagerHikari;
+import database.DatabaseManager;
 
 public class CreateJobPayloadDataDao {
 
@@ -68,7 +66,7 @@ public class CreateJobPayloadDataDao {
 		CreateJobBean bean = new CreateJobBean();
 
 		try {
-			conn = DatabaseManagerHikari.getConnection();
+			conn = DatabaseManager.getConnection();
 
 			statement = conn.createStatement();
 			
