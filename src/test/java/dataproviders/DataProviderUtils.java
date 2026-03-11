@@ -2,8 +2,8 @@ package dataproviders;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
-import org.apache.poi.ss.formula.functions.T;
 import org.testng.annotations.DataProvider;
 
 import ApiUtils.CSVReaderUtils;
@@ -15,6 +15,7 @@ import DataProvidersApiBeans.CreateJobBean;
 import DataProvidersApiBeans.UserBean;
 import RequestModel.CreateJobPayload;
 import RequestModel.UserCredentials;
+import database.dao.CreateJobPayloadDataDao;
 
 public class DataProviderUtils {
 
@@ -31,7 +32,7 @@ public class DataProviderUtils {
 		Iterator<CreateJobBean> createJobBeanIterator = CSVReaderUtils.loadCSV("test-data\\CreateJobData.csv",
 				CreateJobBean.class);
 
-		ArrayList<CreateJobPayload> payloadList = new ArrayList<CreateJobPayload>();
+		List<CreateJobPayload> payloadList = new ArrayList<CreateJobPayload>();
 
 		while (createJobBeanIterator.hasNext()) {
 			tempBean = createJobBeanIterator.next();
@@ -83,6 +84,19 @@ public class DataProviderUtils {
 		}
 
 		return payloadList.iterator();
+	}
+	
+	@DataProvider(name = "CreateJobApiDBDataProvider", parallel = true)
+	public static Iterator<CreateJobPayload> createJobApiDBDataProvider() {
+	    List<CreateJobBean> beanPayload = CreateJobPayloadDataDao.getCreateJobPayloadData();
+	    List<CreateJobPayload> payloadList = new ArrayList<CreateJobPayload>();
+	    
+	    for (CreateJobBean bean : beanPayload) {
+	    	CreateJobPayload payload = CreateJobBeanMapper.mapper(bean);
+	    	payloadList.add(payload);
+		}
+	    	    
+	    return payloadList.iterator();
 	}
 
 }
