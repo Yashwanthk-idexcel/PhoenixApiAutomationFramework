@@ -6,6 +6,8 @@
       <class name="ApiTests.CountApiTest"/>
       <class name="ApiTests.MasterApiTest"/>
       <class name="ApiTests.CreateJobApiTest"/>
+      <class name="ApiTests.CreateJobApiWithDBValidationTest"/>
+      <class name="ApiTests.CreateJobApiWithDBValidationTest2"/>
     </classes>
   </test>
 </suite>
