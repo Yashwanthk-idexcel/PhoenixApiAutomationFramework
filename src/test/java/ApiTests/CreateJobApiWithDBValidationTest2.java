@@ -39,8 +39,8 @@ public class CreateJobApiWithDBValidationTest2 {
 	// Extracting the response data with Deserialization Concept
 
 	private CreateJobPayload payload;
-	Customer customer; // Made as Global, to make it accessible in createJobApiTest method for
-						// validation
+	// Made as Global, to make it accessible in createJobApiTest method for validation
+	Customer customer; 
 	CustomerAddress customerAddress;
 	CustomerProduct customerPorduct;
 
@@ -63,6 +63,7 @@ public class CreateJobApiWithDBValidationTest2 {
 				problemsList);
 	}
 
+	
 	@Test(description = "Verify CreateJob Api is successfully updating the customer details inside database", groups = {
 			"smoke", "api", "regression" })
 	public void createJobApiTest() {
@@ -77,6 +78,7 @@ public class CreateJobApiWithDBValidationTest2 {
 		
 		int customerID = responsePayload.getData().getTr_customer_id();
 
+		
 		// Validate tr_customer table details
 		CustomerDBModel customerDataFromDB = CustomerTableDao.getCustomerInfo(customerID);
 
@@ -87,6 +89,7 @@ public class CreateJobApiWithDBValidationTest2 {
 		Assert.assertEquals(customer.email_id(), customerDataFromDB.getEmail_id());
 		Assert.assertEquals(customer.email_id_alt(), customerDataFromDB.getEmail_id_alt());
 
+		
 		// Validate tr_customer_address table details
 		CustomerAddressDBModel customerAddressDataFromDB = CustomerAddressTableDao.getCustomerAddressInfo(customerID);
 
@@ -99,6 +102,7 @@ public class CreateJobApiWithDBValidationTest2 {
 		Assert.assertEquals(customerAddress.country(), customerAddressDataFromDB.getCountry());
 		Assert.assertEquals(customerAddress.pincode(), customerAddressDataFromDB.getPincode());
 
+		
 		// Validate tr_customer_product table details
 		CustomerProductDBModel customerProductDataFromDB = CustomerProductTableDao.getCustomerProductInfo(customerID);
 

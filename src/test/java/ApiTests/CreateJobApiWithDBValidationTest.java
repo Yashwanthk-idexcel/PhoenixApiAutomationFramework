@@ -42,9 +42,9 @@ import io.restassured.response.ValidatableResponse;
 
 public class CreateJobApiWithDBValidationTest {
 
+	// Made as Global, to make it accessible in createJobApiTest method for validation
 	private CreateJobPayload payload;
-	Customer customer; // Made as Global, to make it accessible in createJobApiTest method for
-						// validation
+	Customer customer;
 	CustomerAddress customerAddress;
 	CustomerProduct customerPorduct;
 
