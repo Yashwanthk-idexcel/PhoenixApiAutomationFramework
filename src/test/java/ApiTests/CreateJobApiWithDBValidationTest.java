@@ -27,6 +27,7 @@ import RequestModel.Customer;
 import RequestModel.CustomerAddress;
 import RequestModel.CustomerProduct;
 import RequestModel.Problems;
+import apiservices.JobService;
 import database.dao.CustomerAddressTableDao;
 import database.dao.CustomerProductTableDao;
 import database.dao.CustomerTableDao;
@@ -43,20 +44,24 @@ import io.restassured.response.ValidatableResponse;
 public class CreateJobApiWithDBValidationTest {
 
 	// Made as Global, to make it accessible in createJobApiTest method for validation
+	private JobService jobService;
 	private CreateJobPayload payload;
-	Customer customer;
-	CustomerAddress customerAddress;
-	CustomerProduct customerPorduct;
+	private Customer customer;
+	private CustomerAddress customerAddress;
+	private CustomerProduct customerPorduct;
 
 	@BeforeMethod(description = "Creating the payload for the CreateJob Api")
 	public void setup() {
+		
+		jobService = new JobService();
+		
 		customer = new Customer("Yashwanth", "K", "9786754626", "", "yashwanthk@gmail.com", "");
 
 		customerAddress = new CustomerAddress("#99", "Shivakrupa", "Abhayappa Layout", "Balaji Gents PG",
 				"BTM 2nd Stage", "560076", "India", "Karnataka");
 
-		customerPorduct = new CustomerProduct(getPreviousDateByDays(10), "99883312222999", "99883312222999",
-				"99883312222999", getPreviousDateByDays(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_BLUE.getCode());
+		customerPorduct = new CustomerProduct(getPreviousDateByDays(10), "44443312222999", "44443312222999",
+				"44443312222999", getPreviousDateByDays(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_BLUE.getCode());
 
 		Problems problem = new Problems(Problem.OVERHEATING.getCode(), "Solution");
 		List<Problems> problemsList = new ArrayList<Problems>();
@@ -71,7 +76,7 @@ public class CreateJobApiWithDBValidationTest {
 			"smoke", "api", "regression" })
 	public void createJobApiTest() {
 
-		Response response = given().spec(SpecUtils.requestSpecWithAuth(Role.FD, payload)).when().post("/job/create")
+		Response response = jobService.create(Role.FD, payload)
 				.then().spec(SpecUtils.responseSpec_OK())
 				.body(matchesJsonSchemaInClasspath("response-schema/CreateJobApiResponseSchema.json"))
 				.body("message", Matchers.equalTo("Job created successfully. "))

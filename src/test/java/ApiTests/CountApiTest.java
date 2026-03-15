@@ -1,13 +1,18 @@
 package ApiTests;
 
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-import static io.restassured.module.jsv.JsonSchemaValidator.*;
-import static Constants.Role.*;
-import static ApiUtils.ConfigManager.*;
+import static Constants.Role.FD;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.hamcrest.Matchers.blankOrNullString;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.everyItem;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import ApiUtils.SpecUtils;
 import apiservices.DashboardService;
 

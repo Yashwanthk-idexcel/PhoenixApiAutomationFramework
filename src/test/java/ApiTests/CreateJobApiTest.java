@@ -1,9 +1,7 @@
 package ApiTests;
 
-import static io.restassured.RestAssured.*;
-import static ApiUtils.DateTimeUtil.*;
-import static io.restassured.module.jsv.JsonSchemaValidator.*;
-
+import static ApiUtils.DateTimeUtil.getPreviousDateByDays;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,19 +24,24 @@ import RequestModel.Customer;
 import RequestModel.CustomerAddress;
 import RequestModel.CustomerProduct;
 import RequestModel.Problems;
+import apiservices.JobService;
 
 public class CreateJobApiTest {
 	private CreateJobPayload payload;
+	private JobService jobService;
 
 	@BeforeMethod(description = "Creating the payload for the CreateJob Api")
 	public void setup() {
+		
+		jobService = new JobService();
+		
 		Customer customer = new Customer("Yashwanth", "K", "9786754626", "", "yashwanthk@gmail.com", "");
 
 		CustomerAddress customerAddress = new CustomerAddress("#99", "Shivakrupa", "Abhayappa Layout",
 				"Balaji Gents PG", "BTM 2nd Stage", "560076", "India", "Karnataka");
 
-		CustomerProduct customerPorduct = new CustomerProduct(getPreviousDateByDays(10), "80009011374519",
-				"80009011374519", "80009011374519", getPreviousDateByDays(10), Product.NEXUS_2.getCode(),
+		CustomerProduct customerPorduct = new CustomerProduct(getPreviousDateByDays(10), "80033331374519",
+				"80033331374519", "80033331374519", getPreviousDateByDays(10), Product.NEXUS_2.getCode(),
 				Model.NEXUS_2_BLUE.getCode());
 
 		Problems problem = new Problems(Problem.OVERHEATING.getCode(), "Solution");
@@ -53,8 +56,7 @@ public class CreateJobApiTest {
 	@Test(description = "Verify if the CreateJob Api is working for iamfd", groups = { "smoke", "api", "regression" })
 	public void createJobApiTest() {
 
-		given().spec(SpecUtils.requestSpecWithAuth(Role.FD, payload))
-				.when().post("/job/create")
+		jobService.create(Role.FD, payload)
 				.then()
 				.spec(SpecUtils.responseSpec_OK())
 				.body(matchesJsonSchemaInClasspath("response-schema/CreateJobApiResponseSchema.json"))
