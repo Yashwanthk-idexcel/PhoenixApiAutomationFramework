@@ -1,11 +1,11 @@
 package ApiTests;
 
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-import static io.restassured.module.jsv.JsonSchemaValidator.*;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import ApiUtils.SpecUtils;
 import RequestModel.UserCredentials;
 import apiservices.AuthService;
@@ -14,7 +14,7 @@ public class LoginApiTest {
 	private UserCredentials userCreds;
 	private AuthService authService;
 
-	@BeforeMethod(description = "Create the request payload for the login api")
+	@BeforeMethod(description = "Create the request payload for the login api & Initializing AuthService class object")
 	public void setup() {
 		userCreds = new UserCredentials("iamfd", "password");
 		authService = new AuthService();

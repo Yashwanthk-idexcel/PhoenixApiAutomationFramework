@@ -6,19 +6,25 @@ import static io.restassured.module.jsv.JsonSchemaValidator.*;
 import static Constants.Role.*;
 import static ApiUtils.ConfigManager.*;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ApiUtils.SpecUtils;
+import apiservices.DashboardService;
 
 
 public class CountApiTest {
+	
+	DashboardService dashboardService;
+	
+	@BeforeMethod(description = "Initializing DashboardService Class Object")
+	public void setup() {
+		dashboardService = new DashboardService();
+	}
 
 	@Test(description = "Verify if the Count Api is working for iamfd", groups = { "smoke", "api", "regression" })
 	public void verifyCountApiResponse() {
 
-		given().baseUri(getProperty("BASE_URI"))
-				.spec(SpecUtils.requestSpecWithAuth(FD))
-				.when()
-				.get("/dashboard/count")
+		dashboardService.count(FD)
 				.then()
 				.spec(SpecUtils.responseSpec_OK())
 				.body("message", equalTo("Success"))
@@ -33,10 +39,7 @@ public class CountApiTest {
 	@Test(description = "Verify if the Count Api is working for iamfd with invalid token", groups = { "smoke", "api",
 			"regression", "negative" })
 	public void countApiTest_MissingAuthToken() {
-		given().baseUri(getProperty("BASE_URI"))
-				.spec(SpecUtils.requestSpec())
-				.when()
-				.get("/dashboard/count")
+		dashboardService.countWithNoAuth()
 				.then()
 				.spec(SpecUtils.responseSpec_TEXT(401));
 	}
