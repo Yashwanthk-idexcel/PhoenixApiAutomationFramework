@@ -8,6 +8,8 @@
       <class name="ApiTests.CreateJobApiTest"/>
       <class name="ApiTests.CreateJobApiWithDBValidationTest"/>
       <class name="ApiTests.CreateJobApiWithDBValidationTest2"/>
+      <class name="ApiTests.DashboardDetailsAPITest"/>
+      <class name="ApiTests.SearchJobApiTest"/>
     </classes>
   </test>
 </suite>

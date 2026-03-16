@@ -1,27 +1,34 @@
 package ApiTests;
 
 import org.hamcrest.Matchers;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import ApiUtils.AuthTokenProvider;
 import ApiUtils.ConfigManager;
 import ApiUtils.SpecUtils;
 import Constants.Role;
+import apiservices.MasterService;
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
 
 import static io.restassured.RestAssured.*;
 
 public class MasterApiTest {
+	
+	private MasterService masterService;
+	
+	@BeforeMethod(description = "Initializing MasterService Class Object")
+	public void setup() {
+		masterService = new MasterService();
+	}
 
 	@Test(description = "Verify if the Master Api is giving correct response", groups = { "smoke", "api",
 			"regression" })
 	public void verifyMasterApi() {
 
 		// RA default adds Content Type as"Content-Type=application/x-www-form-urlencoded"
-		given().spec(SpecUtils.requestSpecWithAuth(Role.FD))
-				.when()
-				.post("master") 
+		masterService.master(Role.FD) 
 				.then().spec(SpecUtils.responseSpec_OK())
 				.body("message", Matchers.equalTo("Success"))
 				.body("data", Matchers.notNullValue())

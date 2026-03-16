@@ -1,25 +1,32 @@
 package ApiTests.datadriven;
 
-import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 import org.hamcrest.Matchers;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
 import Constants.Role;
 import RequestModel.CreateJobPayload;
+import apiservices.JobService;
 
 public class CreateJobApiExcelDataDrivenTest {
+	
+	private JobService jobService;
+
+	@BeforeMethod(description = "Initializing the JobService Class Object")
+	public void setup() {
+		jobService = new JobService();
+	}
+
 	
 	@Test(description = "Verify if the CreateJob Api is working for iamfd", groups = { "datadriven", "api", "regression", "excel" }
 	, dataProviderClass = dataproviders.DataProviderUtils.class
 	, dataProvider = "CreateJobApiExcelDataProvider")
 	public void createJobApiTest(CreateJobPayload createJobPayload) {
 
-		given().spec(SpecUtils.requestSpecWithAuth(Role.FD, createJobPayload))
-				.when()
-				.post("/job/create")
+		jobService.create(Role.FD, createJobPayload)
 				.then()
 				.spec(SpecUtils.responseSpec_OK())
 				.body(matchesJsonSchemaInClasspath("response-schema/CreateJobApiResponseSchema.json"))
