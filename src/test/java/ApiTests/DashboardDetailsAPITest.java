@@ -1,8 +1,5 @@
 package ApiTests;
 
-import java.net.http.HttpResponse.BodyHandler;
-
-import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
