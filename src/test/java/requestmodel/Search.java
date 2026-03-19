@@ -1,4 +1,4 @@
-package RequestModel;
+package requestmodel;
 
 public record Search(String searchText) {
 	

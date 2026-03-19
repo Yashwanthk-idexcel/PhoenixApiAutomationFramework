@@ -1,4 +1,4 @@
-package RequestModel;
+package requestmodel;
 
 import java.util.List;
 

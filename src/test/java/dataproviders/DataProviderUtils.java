@@ -13,9 +13,9 @@ import ApiUtils.FakerDataGenerator;
 import ApiUtils.JsonReaderUtil;
 import DataProvidersApiBeans.CreateJobBean;
 import DataProvidersApiBeans.UserBean;
-import RequestModel.CreateJobPayload;
-import RequestModel.UserCredentials;
 import database.dao.CreateJobPayloadDataDao;
+import requestmodel.CreateJobPayload;
+import requestmodel.UserCredentials;
 
 public class DataProviderUtils {
 

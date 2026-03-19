@@ -3,14 +3,19 @@ package ApiUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import DataProvidersApiBeans.CreateJobBean;
-import RequestModel.CreateJobPayload;
-import RequestModel.Customer;
-import RequestModel.CustomerAddress;
-import RequestModel.CustomerProduct;
-import RequestModel.Problems;
+import requestmodel.CreateJobPayload;
+import requestmodel.Customer;
+import requestmodel.CustomerAddress;
+import requestmodel.CustomerProduct;
+import requestmodel.Problems;
 
 public class CreateJobBeanMapper {
+
+	private static final Logger LOGGER = LogManager.getLogger(CreateJobBeanMapper.class);
 
 	private CreateJobBeanMapper() {
 
@@ -19,6 +24,7 @@ public class CreateJobBeanMapper {
 	public static CreateJobPayload mapper(CreateJobBean bean) {
 		// Bean -> CreateJobPayload Object
 
+		LOGGER.info("Converting the createJobBean - {} to CreateJobPayload", bean);
 		int mstServiceLocationId = Integer.parseInt(bean.getMst_service_location_id());
 		int mstPlatformId = Integer.parseInt(bean.getMst_platform_id());
 		int mstOemId = Integer.parseInt(bean.getMst_oem_id());
@@ -49,6 +55,7 @@ public class CreateJobBeanMapper {
 		CreateJobPayload payload = new CreateJobPayload(mstServiceLocationId, mstPlatformId, mstWarrantyStatusId,
 				mstOemId, customer, customerAddress, customerProduct, problemList);
 		
+		LOGGER.info("Successfully Converted the createJobBean to CreateJobPayload - {}", payload);
 		return payload;
 	}
 }

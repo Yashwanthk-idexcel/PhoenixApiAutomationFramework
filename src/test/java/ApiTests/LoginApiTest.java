@@ -7,8 +7,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
-import RequestModel.UserCredentials;
 import apiservices.AuthService;
+import requestmodel.UserCredentials;
 
 public class LoginApiTest {
 	private UserCredentials userCreds;

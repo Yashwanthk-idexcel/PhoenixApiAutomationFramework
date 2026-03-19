@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
 import Constants.Role;
-import RequestModel.Search;
 import apiservices.JobService;
+import requestmodel.Search;
 
 public class SearchJobApiTest {
 
