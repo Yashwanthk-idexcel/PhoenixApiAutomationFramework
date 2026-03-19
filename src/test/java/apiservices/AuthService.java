@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import ApiUtils.SpecUtils;
+import DataProvidersApiBeans.UserBean;
 import io.restassured.response.Response;
 import requestmodel.UserCredentials;
 
@@ -18,7 +19,7 @@ public class AuthService {
 	// Method name should be same as the endpoint
 	public Response login(Object loginApiPayload) {
 
-		LOGGER.info("Making Login requrest for the Payload: {}", ((UserCredentials)loginApiPayload).username());
+		LOGGER.info("Making Login requrest for the Payload: {}", ((UserBean)loginApiPayload).getUsername());
 		Response response = given().spec(SpecUtils.requestSpec(loginApiPayload)).when().post(lOGIN_ENDPOINT);
 
 		return response;

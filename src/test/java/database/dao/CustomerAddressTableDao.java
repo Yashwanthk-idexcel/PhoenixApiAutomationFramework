@@ -5,10 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import database.DatabaseManager;
 import databasemodel.CustomerAddressDBModel;
 
 public class CustomerAddressTableDao {
+	
+	private static final Logger LOGGER = LogManager.getLogger(CustomerAddressTableDao.class);
 
 	private static final String CUSTOMER_ADDRESS_QUERY = """
 			select apartment_name, flat_number, id, street_name, landmark, area, pincode, country, state
@@ -31,10 +36,12 @@ public class CustomerAddressTableDao {
 		CustomerAddressDBModel customerAddressDb = new CustomerAddressDBModel();
 
 		try {
-
+			LOGGER.info("Getting the Connection from the DatabaseManager");
 			con = DatabaseManager.getConnection();
 			preparedStatement = con.prepareStatement(CUSTOMER_ADDRESS_QUERY);
 			preparedStatement.setInt(1, customerID);
+			
+			LOGGER.info("Executing the SQL Query - {}", CUSTOMER_ADDRESS_QUERY);
 			result = preparedStatement.executeQuery();
 
 			while (result.next()) {
@@ -53,6 +60,7 @@ public class CustomerAddressTableDao {
 			}
 
 		} catch (SQLException e) {
+			LOGGER.error("Can't convert the Result set to customerAddressDb bean", e);
 			e.printStackTrace();
 		}
 		

@@ -7,10 +7,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import DataProvidersApiBeans.CreateJobBean;
 import database.DatabaseManager;
 
 public class CreateJobPayloadDataDao {
+	
+	private static final Logger LOGGER = LogManager.getLogger(CreateJobPayloadDataDao.class);
 
 	private static final String SQL_QUERY = """
 						SELECT
@@ -70,10 +75,12 @@ public class CreateJobPayloadDataDao {
 		CreateJobBean bean = new CreateJobBean();
 
 		try {
-			conn = DatabaseManager.getConnection();
+			LOGGER.info("Getting the Connection from the DatabaseManager");
 
+			conn = DatabaseManager.getConnection();
 			statement = conn.createStatement();
-			
+
+			LOGGER.info("Executing the SQL Query - {}", SQL_QUERY);
 			result = statement.executeQuery(SQL_QUERY);
 			
 			while(result.next()) {	
@@ -112,6 +119,7 @@ public class CreateJobPayloadDataDao {
 			}
 
 		} catch (SQLException e) {
+			LOGGER.error("Can't convert the Result set to CreateJobBean bean", e);
 			e.printStackTrace();
 		}
 		

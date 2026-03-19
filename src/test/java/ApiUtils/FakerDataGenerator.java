@@ -43,7 +43,6 @@ public class FakerDataGenerator {
 	public static CreateJobPayload generateFakeCreateJobData() {
 
 		LOGGER.info("Generating the fake payload for create job api");
-
 		
 		Customer customer = generateFakeCustomerData();
 		CustomerAddress customerAddress = generateFakeCustomerAddressData();

@@ -21,7 +21,7 @@ public class CreateJobApiJsonDataDrivenTest {
 	}
 
 	@Test(description = "Verify if the CreateJob Api is working for iamfd", groups = { "datadriven", "api",
-			"regression", "faker" }, dataProviderClass = dataproviders.DataProviderUtils.class, dataProvider = "CreateJobApiJsonDataProvider")
+			"regression", "json" }, dataProviderClass = dataproviders.DataProviderUtils.class, dataProvider = "CreateJobApiJsonDataProvider")
 	public void createJobApiTest(CreateJobPayload createJobPayload) {
 
 		jobService.create(Role.FD, createJobPayload)

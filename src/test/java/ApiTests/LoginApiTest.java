@@ -7,16 +7,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
+import DataProvidersApiBeans.UserBean;
 import apiservices.AuthService;
 import requestmodel.UserCredentials;
 
 public class LoginApiTest {
-	private UserCredentials userCreds;
+	private UserBean userCreds;
 	private AuthService authService;
 
 	@BeforeMethod(description = "Create the request payload for the login api & Initializing AuthService class object")
 	public void setup() {
-		userCreds = new UserCredentials("iamfd", "password");
+		userCreds = new UserBean("iamfd", "password");
 		authService = new AuthService();
 	}
 
