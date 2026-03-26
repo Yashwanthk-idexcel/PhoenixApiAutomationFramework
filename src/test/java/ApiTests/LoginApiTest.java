@@ -4,6 +4,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.hamcrest.Matchers.equalTo;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
@@ -11,6 +12,7 @@ import DataProvidersApiBeans.UserBean;
 import apiservices.AuthService;
 import requestmodel.UserCredentials;
 
+@Listeners(listeners.ApiTestListeners.class)
 public class LoginApiTest {
 	private UserBean userCreds;
 	private AuthService authService;
