@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
-import RequestModel.UserCredentials;
+import DataProvidersApiBeans.UserBean;
 import apiservices.AuthService;
 
 public class LoginApiJsonDataDrivenTest {
@@ -21,7 +21,7 @@ public class LoginApiJsonDataDrivenTest {
 
 	@Test(description = "Verify if the Login Api is working for iamfd", groups = { "datadriven", "api", "regression",
 			"csv" }, dataProviderClass = dataproviders.DataProviderUtils.class, dataProvider = "LoginApiJsonDataProvider")
-	public void loginApiTest(UserCredentials userCreds) {
+	public void loginApiTest(UserBean userCreds) {
 
 		authService.login(userCreds)
 				.then()

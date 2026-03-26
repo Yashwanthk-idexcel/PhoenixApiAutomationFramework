@@ -5,11 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import database.DatabaseManager;
-import databasemodel.CustomerProductDBModel;
 import databasemodel.JobHeadDBModel;
 
 public class JobHeadTableDao {
+	
+	private static final Logger LOGGER = LogManager.getLogger(JobHeadTableDao.class);
 
 	private static final String JOB_HEAD_QUERY = """
 			select *
@@ -28,9 +32,13 @@ public class JobHeadTableDao {
 		JobHeadDBModel jobHeadDbModel = new JobHeadDBModel();
 
 		try {
+			LOGGER.info("Getting the Connection from the DatabaseManager");
+
 			con = DatabaseManager.getConnection();
 			prepareStatement = con.prepareStatement(JOB_HEAD_QUERY);
 			prepareStatement.setInt(1, customerID);
+			
+			LOGGER.info("Executing the SQL Query - {}", JOB_HEAD_QUERY);
 			resultSet = prepareStatement.executeQuery();
 
 			while (resultSet.next()) {
@@ -45,6 +53,7 @@ public class JobHeadTableDao {
 			}
 
 		} catch (SQLException e) {
+			LOGGER.error("Can't convert the Result set to jobHeadDbModel bean", e);
 			e.printStackTrace();
 		}
 

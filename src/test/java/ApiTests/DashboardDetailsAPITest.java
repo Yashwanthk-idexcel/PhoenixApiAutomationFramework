@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
 import Constants.Role;
-import RequestModel.Details;
 import apiservices.DashboardService;
+import requestmodel.Details;
 
 public class DashboardDetailsAPITest {
 

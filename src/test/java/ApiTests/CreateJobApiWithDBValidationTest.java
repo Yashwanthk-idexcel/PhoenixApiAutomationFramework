@@ -22,11 +22,6 @@ import Constants.Product;
 import Constants.Role;
 import Constants.ServiceLocation;
 import Constants.WarrantyStatus;
-import RequestModel.CreateJobPayload;
-import RequestModel.Customer;
-import RequestModel.CustomerAddress;
-import RequestModel.CustomerProduct;
-import RequestModel.Problems;
 import apiservices.JobService;
 import database.dao.CustomerAddressTableDao;
 import database.dao.CustomerProductTableDao;
@@ -40,6 +35,11 @@ import databasemodel.JobHeadDBModel;
 import databasemodel.MapJobProblemModel;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
+import requestmodel.CreateJobPayload;
+import requestmodel.Customer;
+import requestmodel.CustomerAddress;
+import requestmodel.CustomerProduct;
+import requestmodel.Problems;
 
 public class CreateJobApiWithDBValidationTest {
 

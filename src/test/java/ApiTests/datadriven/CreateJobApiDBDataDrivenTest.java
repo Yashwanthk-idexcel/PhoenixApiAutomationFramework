@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
 import Constants.Role;
-import RequestModel.CreateJobPayload;
 import apiservices.JobService;
+import requestmodel.CreateJobPayload;
 
 public class CreateJobApiDBDataDrivenTest {
 	

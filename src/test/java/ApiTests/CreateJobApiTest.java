@@ -19,12 +19,12 @@ import Constants.Product;
 import Constants.Role;
 import Constants.ServiceLocation;
 import Constants.WarrantyStatus;
-import RequestModel.CreateJobPayload;
-import RequestModel.Customer;
-import RequestModel.CustomerAddress;
-import RequestModel.CustomerProduct;
-import RequestModel.Problems;
 import apiservices.JobService;
+import requestmodel.CreateJobPayload;
+import requestmodel.Customer;
+import requestmodel.CustomerAddress;
+import requestmodel.CustomerProduct;
+import requestmodel.Problems;
 
 public class CreateJobApiTest {
 	private CreateJobPayload payload;
