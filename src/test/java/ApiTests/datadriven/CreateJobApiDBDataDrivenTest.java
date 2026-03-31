@@ -4,6 +4,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
@@ -11,6 +12,7 @@ import Constants.Role;
 import apiservices.JobService;
 import requestmodel.CreateJobPayload;
 
+@Listeners(listeners.ApiTestListeners.class)
 public class CreateJobApiDBDataDrivenTest {
 	
 	private JobService jobService;

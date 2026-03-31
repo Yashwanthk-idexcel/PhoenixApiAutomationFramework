@@ -3,6 +3,7 @@ package ApiUtils;
 import org.hamcrest.Matchers;
 
 import Constants.Role;
+import apifilters.SensitiveDataFilter;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
@@ -19,10 +20,7 @@ public class SpecUtils {
 				.setBaseUri(ConfigManager.getProperty("BASE_URI"))
 				.setContentType(ContentType.JSON)
 				.setAccept(ContentType.JSON)
-				.log(LogDetail.URI)
-				.log(LogDetail.METHOD)
-				.log(LogDetail.HEADERS)
-				.log(LogDetail.BODY)
+				.addFilter(new SensitiveDataFilter())
 				.build();
 
 		return requestSpecification;
@@ -37,10 +35,7 @@ public class SpecUtils {
 				.setContentType(ContentType.JSON)
 				.setBody(payload)
 				.setAccept(ContentType.JSON)
-				.log(LogDetail.URI)
-				.log(LogDetail.METHOD)
-				.log(LogDetail.HEADERS)
-				.log(LogDetail.BODY)
+				.addFilter(new SensitiveDataFilter())
 				.build();
 
 		return requestSpecification;
@@ -55,10 +50,7 @@ public class SpecUtils {
 				.setContentType(ContentType.JSON)
 				.addHeader("Authorization", AuthTokenProvider.getToken(role))
 				.setAccept(ContentType.JSON)
-				.log(LogDetail.URI)
-				.log(LogDetail.METHOD)
-				.log(LogDetail.HEADERS)
-				.log(LogDetail.BODY)
+				.addFilter(new SensitiveDataFilter())
 				.build();
 
 		return requestSpecification;
@@ -73,10 +65,7 @@ public class SpecUtils {
 				.addHeader("Authorization", AuthTokenProvider.getToken(role))
 				.setAccept(ContentType.JSON)
 				.setBody(payload)
-				.log(LogDetail.URI)
-				.log(LogDetail.METHOD)
-				.log(LogDetail.HEADERS)
-				.log(LogDetail.BODY)
+				.addFilter(new SensitiveDataFilter())
 				.build();
 
 		return requestSpecification;
@@ -89,7 +78,6 @@ public class SpecUtils {
 				.expectContentType(ContentType.JSON)
 				.expectStatusCode(200)
 				.expectResponseTime(Matchers.lessThan(1000L))
-				.log(LogDetail.ALL)
 				.build();
 
 		return responseSpecification;
@@ -102,7 +90,6 @@ public class SpecUtils {
 				.expectContentType(ContentType.JSON)
 				.expectStatusCode(statusCde)
 				.expectResponseTime(Matchers.lessThan(1000L))
-				.log(LogDetail.ALL)
 				.build();
 
 		return responseSpecification;
@@ -114,7 +101,6 @@ public class SpecUtils {
 		ResponseSpecification responseSpecification = new ResponseSpecBuilder()
 				.expectStatusCode(statusCde)
 				.expectResponseTime(Matchers.lessThan(1000L))
-				.log(LogDetail.ALL)
 				.build();
 
 		return responseSpecification;

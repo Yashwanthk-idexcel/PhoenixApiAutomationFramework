@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
@@ -26,6 +27,7 @@ import requestmodel.CustomerAddress;
 import requestmodel.CustomerProduct;
 import requestmodel.Problems;
 
+@Listeners(listeners.ApiTestListeners.class)
 public class CreateJobApiTest {
 	private CreateJobPayload payload;
 	private JobService jobService;

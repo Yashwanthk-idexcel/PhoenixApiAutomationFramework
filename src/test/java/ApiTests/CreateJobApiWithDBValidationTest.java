@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
@@ -41,6 +42,7 @@ import requestmodel.CustomerAddress;
 import requestmodel.CustomerProduct;
 import requestmodel.Problems;
 
+@Listeners(listeners.ApiTestListeners.class)
 public class CreateJobApiWithDBValidationTest {
 
 	// Made as Global, to make it accessible in createJobApiTest method for validation
