@@ -1,25 +1,21 @@
 package ApiTests;
 
-import static io.restassured.RestAssured.*;
-import static io.restassured.module.jsv.JsonSchemaValidator.*;
-import static org.hamcrest.Matchers.*;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import ApiUtils.AuthTokenProvider;
 import ApiUtils.SpecUtils;
 import Constants.Role;
 import apiservices.UserService;
-
-import static Constants.Role.*;
-
-import static ApiUtils.ConfigManager.*;
-import io.restassured.http.ContentType;
-import io.restassured.http.Header;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
+
+@Listeners(listeners.ApiTestListeners.class)
 public class UserDetailsApiTest {
 	
 	private UserService userService;

@@ -2,6 +2,7 @@ package ApiTests;
 
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import ApiUtils.AuthTokenProvider;
@@ -14,6 +15,7 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 
 import static io.restassured.RestAssured.*;
 
+@Listeners(listeners.ApiTestListeners.class)
 public class MasterApiTest {
 	
 	private MasterService masterService;
