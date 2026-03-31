@@ -11,7 +11,7 @@ import io.restassured.specification.FilterableResponseSpecification;
 
 public class SensitiveDataFilter implements Filter {
 	
-	private static final Logger LOGGER = LogManager.getLogger();
+	private static final Logger LOGGER = LogManager.getLogger(SensitiveDataFilter.class);
 
 	@Override
 	public Response filter(FilterableRequestSpecification requestSpec, FilterableResponseSpecification responseSpec,
