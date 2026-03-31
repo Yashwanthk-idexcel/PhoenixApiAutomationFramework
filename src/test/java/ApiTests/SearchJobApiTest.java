@@ -2,6 +2,7 @@ package ApiTests;
 
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
@@ -9,6 +10,7 @@ import Constants.Role;
 import apiservices.JobService;
 import requestmodel.Search;
 
+@Listeners(listeners.ApiTestListeners.class)
 public class SearchJobApiTest {
 
 	private static final String JOB_NUMBER = "JOB_217401";

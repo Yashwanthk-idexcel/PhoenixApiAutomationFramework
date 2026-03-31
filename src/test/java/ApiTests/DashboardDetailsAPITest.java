@@ -2,6 +2,7 @@ package ApiTests;
 
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import ApiUtils.SpecUtils;
@@ -9,6 +10,7 @@ import Constants.Role;
 import apiservices.DashboardService;
 import requestmodel.Details;
 
+@Listeners(listeners.ApiTestListeners.class)
 public class DashboardDetailsAPITest {
 
 	private DashboardService dashboardService;
