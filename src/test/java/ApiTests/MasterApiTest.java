@@ -1,21 +1,27 @@
 package ApiTests;
 
+import static io.restassured.RestAssured.given;
+
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import ApiUtils.AuthTokenProvider;
-import ApiUtils.ConfigManager;
 import ApiUtils.SpecUtils;
 import Constants.Role;
 import apiservices.MasterService;
-import io.restassured.http.ContentType;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.module.jsv.JsonSchemaValidator;
 
-import static io.restassured.RestAssured.*;
-
 @Listeners(listeners.ApiTestListeners.class)
+
+@Epic("Job Management")
+@Feature("Master Api Request")
 public class MasterApiTest {
 	
 	private MasterService masterService;
@@ -25,6 +31,9 @@ public class MasterApiTest {
 		masterService = new MasterService();
 	}
 
+	@Story("Master Api should bring OEM Details, Problem Type, Warrenty Status")
+	@Description("Verify if master Api is working correctly")
+	@Severity(SeverityLevel.BLOCKER)
 	@Test(description = "Verify if the Master Api is giving correct response", groups = { "smoke", "api",
 			"regression" })
 	public void verifyMasterApi() {

@@ -21,6 +21,12 @@ import Constants.Role;
 import Constants.ServiceLocation;
 import Constants.WarrantyStatus;
 import apiservices.JobService;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import requestmodel.CreateJobPayload;
 import requestmodel.Customer;
 import requestmodel.CustomerAddress;
@@ -28,6 +34,8 @@ import requestmodel.CustomerProduct;
 import requestmodel.Problems;
 
 @Listeners(listeners.ApiTestListeners.class)
+@Epic("Job Management")
+@Feature("Job Creation")
 public class CreateJobApiTest {
 	private CreateJobPayload payload;
 	private JobService jobService;
@@ -55,6 +63,9 @@ public class CreateJobApiTest {
 				problemsList);
 	}
 
+	@Story("FD should be able to create job")
+	@Description("Verify if createJob Api is able to create inwarrenty job")
+	@Severity(SeverityLevel.BLOCKER)
 	@Test(description = "Verify if the CreateJob Api is working for iamfd", groups = { "smoke", "api", "regression" })
 	public void createJobApiTest() {
 

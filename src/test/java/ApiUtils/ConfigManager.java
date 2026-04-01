@@ -13,7 +13,7 @@ public class ConfigManager {
 
 	private static Properties prop = new Properties();
 	private static String path = "config/config.qa.properties";
-	private static String env;
+	public static String env; // Made as public to read this value in environment.properties file
 	private static final Logger LOGGER = LogManager.getLogger(ConfigManager.class);
 
 	private ConfigManager() {
