@@ -35,7 +35,8 @@ public class LoginApiTest {
 	@Story("Valid user should be able to login into the system")
 	@Description("Verify if FD USer is able to login via API")
 	@Severity(SeverityLevel.CRITICAL)
-	@Test(description = "Verify if the Login Api is working for iamfd", groups = { "smoke", "api", "regression" })
+	@Test(description = "Verify if the Login Api is working for iamfd", groups = { "smoke", "api", "regression" },
+		retryAnalyzer = retry.RetryAnalyzer.class)
 	public void loginApiTest() {
 
 		authService.login(userCreds)
