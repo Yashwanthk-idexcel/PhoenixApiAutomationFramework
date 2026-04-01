@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import ApiUtils.SpecUtils;
 import DataProvidersApiBeans.UserBean;
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import requestmodel.UserCredentials;
 
@@ -17,6 +18,7 @@ public class AuthService {
 	private static final Logger LOGGER = LogManager.getLogger(AuthService.class);
 
 	// Method name should be same as the endpoint
+	@Step("Perform login request with the loginApiPayload")
 	public Response login(Object loginApiPayload) {
 
 		LOGGER.info("Making Login requrest for the Payload: {}", ((UserBean)loginApiPayload).getUsername());
