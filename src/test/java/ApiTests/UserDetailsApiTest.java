@@ -11,11 +11,19 @@ import org.testng.annotations.Test;
 import ApiUtils.SpecUtils;
 import Constants.Role;
 import apiservices.UserService;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 
 @Listeners(listeners.ApiTestListeners.class)
+@Epic("User Management")
+@Feature("User Details")
 public class UserDetailsApiTest {
 	
 	private UserService userService;
@@ -25,6 +33,10 @@ public class UserDetailsApiTest {
 		userService = new UserService();
 	}
 
+	
+	@Story("User Details should be shown")
+	@Description("Verify the UserDetails Api response is dipslaying correctly")
+	@Severity(SeverityLevel.CRITICAL)
 	@Test(description = "Verify the user details api response is shown correctly", groups = { "api", "smole",
 			"regression" })
 	public void userDetailsApiTest() {
