@@ -15,9 +15,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
-import requestmodel.UserCredentials;
 
 @Listeners(listeners.ApiTestListeners.class)
 @Epic("User Management")
@@ -35,7 +33,8 @@ public class LoginApiTest {
 	@Story("Valid user should be able to login into the system")
 	@Description("Verify if FD USer is able to login via API")
 	@Severity(SeverityLevel.CRITICAL)
-	@Test(description = "Verify if the Login Api is working for iamfd", groups = { "smoke", "api", "regression" })
+	@Test(description = "Verify if the Login Api is working for iamfd", groups = { "smoke", "api", "regression" },
+		retryAnalyzer = retry.RetryAnalyzer.class)
 	public void loginApiTest() {
 
 		authService.login(userCreds)

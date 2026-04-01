@@ -8,7 +8,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import alluredemo.AllureEnvironmentWriterUtil;
+import allure_reporting.AllureEnvironmentWriterUtil;
 
 public class ApiTestListeners implements ITestListener {
 
