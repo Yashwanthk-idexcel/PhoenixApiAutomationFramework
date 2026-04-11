@@ -31,8 +31,8 @@ public class AuthTokenProvider {
 			LOGGER.info("Token found for the role: {}", role);
 			return tokenCache.get(role);
 		}
+		
 		LOGGER.info("Token not found, & making the login request for the role: {}", role);
-
 
 		if (role == FD)
 			userCredential = new UserCredentials("iamfd", "password");

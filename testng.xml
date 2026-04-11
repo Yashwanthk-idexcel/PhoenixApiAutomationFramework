@@ -1,4 +1,4 @@
-<suite name="Phoenix API Test Suite" verbose="1">
+<suite name="Phoenix API Test Suite" parallel="classes" verbose="1">
   <test name="Inwarranty Flow Test">
     <classes>
       <class name="ApiTests.LoginApiTest"/>
