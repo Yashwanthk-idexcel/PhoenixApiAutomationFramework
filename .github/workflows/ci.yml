@@ -1,11 +1,11 @@
 name: Phoenix Test Automation CI Workflow
 on:
-  push:
-    branches: ["master"]
-  pull_request:
-    branches: ["master"]
-  schedule: # Set CRON for midnight IST [Convert from UTC to IST]
-    - cron: "30 18 * * *"
+  # push:
+  #   branches: ["master"]
+  # pull_request:
+  #   branches: ["master"]
+  # schedule: # Set CRON for midnight IST [Convert from UTC to IST]
+  #   - cron: "30 18 * * *"
   workflow_dispatch:
     inputs:
       env: 
