@@ -26,6 +26,7 @@ public class DashboardService {
 		return response;
 	}
 	
+	
 	public Response countWithNoAuth() {
 		LOGGER.info("Making Login request to: {} with no auth token", COUNT_ENDPOINT);
 		Response response = given().spec(SpecUtils.requestSpec())
@@ -34,6 +35,7 @@ public class DashboardService {
 		
 		return response;
 	}
+	
 	
 	public Response details(Role role, Object payload) {
 		LOGGER.info("Making Login request to details endpoint: {} for the Role: {} with payload: {}", COUNT_ENDPOINT, role, payload);

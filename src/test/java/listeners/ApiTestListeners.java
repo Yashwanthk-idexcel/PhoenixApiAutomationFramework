@@ -14,6 +14,10 @@ public class ApiTestListeners implements ITestListener {
 
 	private static final Logger LOGGER = LogManager.getLogger(ApiTestListeners.class);
 
+	public void onStart(ITestContext context) {
+		LOGGER.info("-------->>>>>>>> Start of the Phoenix Api Framework <<<<<<<<<<<----------");
+		AllureEnvironmentWriterUtil.creteEnvironmentPropertiesFile();
+	}
 	
 	public void onTestStart(ITestResult result) {
 		LOGGER.info("-------->>>>>>>> Starting the Test: {} <<<<<<<<<<<----------", result.getName());
@@ -40,14 +44,8 @@ public class ApiTestListeners implements ITestListener {
 		LOGGER.error("-------->>>>>>>> Error Message {} <<<<<<<<<<<----------", result.getThrowable().getMessage());
 		LOGGER.error(result.getThrowable());
 	}
-	
-	public void onStart(ITestContext context) {
-		LOGGER.info("-------->>>>>>>> Start of the Phoenix Api Framework <<<<<<<<<<<----------");
-		AllureEnvironmentWriterUtil.creteEnvironmentPropertiesFile();
-	}
-	
+
 	public void onFinish(ITestContext context) {
 		LOGGER.info("-------->>>>>>>> Finished!! <<<<<<<<<<<----------");
 	}
-
 }

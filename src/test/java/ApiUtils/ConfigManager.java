@@ -31,10 +31,10 @@ public class ConfigManager {
 		LOGGER.info("Running the test in the environment: {}", env);
 
 		switch (env) {
-		case "dev" -> path = "config/config.dev.properties"; // Arrow Operator
-		case "qa" -> path = "config/config.qa.properties";
-		case "uat" -> path = "config/config.uat.properties";
-		default -> path = "config/config.qa.properties";
+			case "dev" -> path = "config/config.dev.properties"; // Arrow Operator - Java 14
+			case "qa" -> path = "config/config.qa.properties";
+			case "uat" -> path = "config/config.uat.properties";
+			default -> path = "config/config.qa.properties";
 		}
 		LOGGER.info("Using the property file from the path: {}", path);
 
